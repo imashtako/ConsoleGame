@@ -1,0 +1,11 @@
+﻿  Background.cpp
+  ConsoleGame.cpp
+  Human.cpp
+  IDrawableObject.cpp
+  MainCircle.cpp
+C:\Users\imashtak\source\repos\ConsoleGame\ConsoleGame\MainCircle.cpp(4,34): warning C4244: '=': conversion from 'double' to 'clock_t', possible loss of data
+  Plane.cpp
+C:\Users\imashtak\source\repos\ConsoleGame\ConsoleGame\Plane.cpp(49,17): warning C4838: conversion from 'int' to 'SHORT' requires a narrowing conversion
+C:\Users\imashtak\source\repos\ConsoleGame\ConsoleGame\Plane.cpp(49,20): warning C4838: conversion from 'int' to 'SHORT' requires a narrowing conversion
+  Generating Code...
+  ConsoleGame.vcxproj -> C:\Users\imashtak\source\repos\ConsoleGame\Debug\ConsoleGame.exe
