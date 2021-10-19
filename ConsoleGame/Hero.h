@@ -1,10 +1,10 @@
 #pragma once
 #include "IDrawableObject.h"
-class Human :
+class Hero :
     public IDrawableObject
 {
 public:
-    Human(int x, int y);
+    Hero(int x, int y);
     void Draw(Plane& plane) override;
 
 private:

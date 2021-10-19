@@ -2,9 +2,11 @@
 #include "MainCircle.h"
 #include "Plane.h"
 #include "Background.h"
-#include "Human.h"
+#include "Hero.h"
+#include <string>
 
 using namespace std;
+
 
 int main()
 {
@@ -15,10 +17,9 @@ int main()
         plane.Clean();
         Background background(0, 0);
         background.Draw(plane);
-        Human human(4, 7);
+        Hero human(4, 6);
         human.Draw(plane);
         plane.Render();
-        cout << i << endl;
         circle.WaitNextFrame();
     }
 }

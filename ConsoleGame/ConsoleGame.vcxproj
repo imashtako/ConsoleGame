@@ -140,15 +140,16 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Background.cpp" />
+    <ClCompile Include="CharMatrix.cpp" />
     <ClCompile Include="ConsoleGame.cpp" />
-    <ClCompile Include="Human.cpp" />
-    <ClCompile Include="IDrawableObject.cpp" />
+    <ClCompile Include="Hero.cpp" />
     <ClCompile Include="MainCircle.cpp" />
     <ClCompile Include="Plane.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Background.h" />
-    <ClInclude Include="Human.h" />
+    <ClInclude Include="CharMatrix.h" />
+    <ClInclude Include="Hero.h" />
     <ClInclude Include="IDrawableObject.h" />
     <ClInclude Include="MainCircle.h" />
     <ClInclude Include="Plane.h" />

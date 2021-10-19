@@ -6,18 +6,15 @@
 
 using namespace std;
 
-Plane::Plane(int x, int y): x_size(x), y_size(y)
+Plane::Plane(size_t x, size_t y): map(x, y)
 {
-    map = vector<vector<char>>(y);
-    for (int i = 0; i < y; i++) {
-        map[i] = vector<char>(x);
-    }
+    Clean();
 }
 
 void Plane::Clean()
 {
-    for (int i = 0; i < y_size; i++) {
-        for (int j = 0; j < x_size; j++) {
+    for (size_t i = 0; i < map.size_y; i++) {
+        for (size_t j = 0; j < map.size_x; j++) {
             map[i][j] = ' ';
         }
     }
@@ -26,8 +23,8 @@ void Plane::Clean()
 std::string Plane::ToString()
 {
     string result = "";
-    for (int i = 0; i < y_size; i++) {
-        for (int j = 0; j < x_size; j++) {
+    for (size_t i = 0; i < map.size_y; i++) {
+        for (size_t j = 0; j < map.size_x; j++) {
             result += map[i][j];
         }
         result += '\n';
@@ -41,7 +38,19 @@ void Plane::Render()
     cout << ToString() << endl;
 }
 
-void Plane::MoveCursorTo(int x, int y)
+void Plane::Insert(size_t x, size_t y, CharMatrix&& matrix)
+{
+    for (size_t i = 0; i < matrix.size_y; i++) {
+        for (size_t j = 0; j < matrix.size_x; j++) {
+            if (y + i < map.size_y && x + j < map.size_x)
+            {
+                map[y + i][x + j] = matrix[i][j];
+            }
+        }
+    }
+}
+
+void Plane::MoveCursorTo(short x, short y)
 {
     static HANDLE h = NULL;
     if (!h)

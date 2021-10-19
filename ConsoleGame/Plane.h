@@ -3,18 +3,19 @@
 #include <vector>
 #include <string>
 
+#include "CharMatrix.h"
+
+
 class Plane
 {
 public:
-	const int x_size;
-	const int y_size;
-	std::vector<std::vector<char>> map;
-	Plane(int x, int y);
+	Plane(size_t x, size_t y);
 	void Clean();
 	std::string ToString();
 	void Render();
-
+	void Insert(size_t x, size_t y, CharMatrix&& matrix);
 private:
-	void MoveCursorTo(int x, int y);
+	CharMatrix map;
+	void MoveCursorTo(short x, short y);
 };
 
