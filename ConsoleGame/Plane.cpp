@@ -50,6 +50,15 @@ void Plane::Insert(size_t x, size_t y, CharMatrix&& matrix)
     }
 }
 
+void Plane::HideCursor()
+{
+    HANDLE consoleHandle = GetStdHandle(STD_OUTPUT_HANDLE);
+    CONSOLE_CURSOR_INFO info;
+    info.dwSize = 100;
+    info.bVisible = FALSE;
+    SetConsoleCursorInfo(consoleHandle, &info);
+}
+
 void Plane::MoveCursorTo(short x, short y)
 {
     static HANDLE h = NULL;

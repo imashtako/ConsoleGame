@@ -5,7 +5,7 @@
 class MainCircle
 {
 public:
-	MainCircle(int rate);
+	MainCircle(float rate);
 	void WaitNextFrame();
 
 private:

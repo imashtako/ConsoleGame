@@ -14,6 +14,8 @@ public:
 	std::string ToString();
 	void Render();
 	void Insert(size_t x, size_t y, CharMatrix&& matrix);
+	void HideCursor();
+
 private:
 	CharMatrix map;
 	void MoveCursorTo(short x, short y);

@@ -143,6 +143,7 @@
     <ClCompile Include="CharMatrix.cpp" />
     <ClCompile Include="ConsoleGame.cpp" />
     <ClCompile Include="Hero.cpp" />
+    <ClCompile Include="InputReader.cpp" />
     <ClCompile Include="MainCircle.cpp" />
     <ClCompile Include="Plane.cpp" />
   </ItemGroup>
@@ -151,6 +152,7 @@
     <ClInclude Include="CharMatrix.h" />
     <ClInclude Include="Hero.h" />
     <ClInclude Include="IDrawableObject.h" />
+    <ClInclude Include="InputReader.h" />
     <ClInclude Include="MainCircle.h" />
     <ClInclude Include="Plane.h" />
   </ItemGroup>

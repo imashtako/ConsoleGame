@@ -7,32 +7,31 @@
 #include "Plane.h"
 #include "Background.h"
 #include "Hero.h"
+#include "InputReader.h"
 
 using namespace std;
 
-
-void HideCursor()
-{
-    HANDLE consoleHandle = GetStdHandle(STD_OUTPUT_HANDLE);
-    CONSOLE_CURSOR_INFO info;
-    info.dwSize = 100;
-    info.bVisible = FALSE;
-    SetConsoleCursorInfo(consoleHandle, &info);
-}
 
 int main()
 {
     MainCircle circle(60);
     Plane plane(50, 11);
+    InputReader input_reader;
+    input_reader.Start();
     system("cls");
-    HideCursor();
+    plane.HideCursor();
+    
+    Background background(0, 0);
+    Hero hero(4, 7);
+
     for (int i = 0; true; i++) {
         plane.Clean();
-        Background background(0, 0);
         background.Draw(plane);
-        Hero human(4, 7);
-        human.Draw(plane);
+        hero.Draw(plane);
         plane.Render();
+        cout << i << endl;
         circle.WaitNextFrame();
+        hero.CheckInput(input_reader);
+        input_reader.CleanBuffer();
     }
 }

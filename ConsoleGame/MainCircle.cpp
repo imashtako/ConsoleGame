@@ -1,6 +1,6 @@
 #include "MainCircle.h"
 
-MainCircle::MainCircle(int rate): previous_time(clock()), frame_rate(rate) {
+MainCircle::MainCircle(float rate): previous_time(clock()), frame_rate(rate) {
     time_between_frames = 1000.0 / rate;
 }
 void MainCircle::WaitNextFrame()
