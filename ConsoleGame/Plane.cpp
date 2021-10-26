@@ -3,6 +3,8 @@
 #include <windows.h>
 
 #include "Plane.h"
+#include "IDrawableObject.h"
+#include "TypeHelpers.h"
 
 using namespace std;
 
@@ -57,6 +59,16 @@ void Plane::HideCursor()
     info.dwSize = 100;
     info.bVisible = FALSE;
     SetConsoleCursorInfo(consoleHandle, &info);
+}
+
+void Plane::Update(World& world)
+{
+    Clean();
+    for (GameObject* object : world.GetObjects()) {
+        if (IDrawableObject* drawable_object = dynamic_cast<IDrawableObject*>(object)) {
+            drawable_object->Draw(*this);
+        }
+    }
 }
 
 void Plane::MoveCursorTo(short x, short y)

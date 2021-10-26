@@ -5,7 +5,7 @@
 
 using namespace std;
 
-Hero::Hero(int x, int y): x_pos(x), y_pos(y), state(HeroState::RIGHT) {}
+Hero::Hero(int x, int y): GameObject(x,y), state(HeroState::RIGHT) {}
 void Hero::Draw(Plane& plane)
 {
     vector<string> image;
@@ -34,6 +34,11 @@ void Hero::Draw(Plane& plane)
     }
     plane.Insert(x_pos, y_pos, image);
 }
+
+void Hero::Update(const Plane& plane)
+{
+}
+
 void Hero::CheckInput(const InputReader& input_reader)
 {
     if (input_reader.IsButtonDown(ButtonKey::d)) {
@@ -45,4 +50,7 @@ void Hero::CheckInput(const InputReader& input_reader)
         state = HeroState::LEFT;
     }
 }
-;
+bool Hero::InThisPoint(int x, int y)
+{
+    return x >= x_pos && x < x_pos + (int)x_size && y >= y_pos && y < y_pos + (int)y_size;
+}

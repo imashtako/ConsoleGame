@@ -5,33 +5,38 @@
 
 #include "MainCircle.h"
 #include "Plane.h"
-#include "Background.h"
+#include "Ground.h"
 #include "Hero.h"
 #include "InputReader.h"
+#include "World.h"
 
 using namespace std;
 
 
 int main()
 {
+    system("cls");
+
+
     MainCircle circle(60);
-    Plane plane(50, 11);
+
     InputReader input_reader;
     input_reader.Start();
-    system("cls");
+
+    World world;
+    Ground* background = new Ground(0, 0);
+    world.AddObject(background);
+    Hero* hero = new Hero(4, 7);
+    world.AddObject(hero);
+    Plane plane(50, 11);
     plane.HideCursor();
-    
-    Background background(0, 0);
-    Hero hero(4, 7);
 
     for (int i = 0; true; i++) {
-        plane.Clean();
-        background.Draw(plane);
-        hero.Draw(plane);
+        plane.Update(world);
         plane.Render();
         cout << i << endl;
         circle.WaitNextFrame();
-        hero.CheckInput(input_reader);
+        hero->CheckInput(input_reader);
         input_reader.CleanBuffer();
     }
 }

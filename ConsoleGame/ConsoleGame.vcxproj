@@ -139,22 +139,29 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Background.cpp" />
+    <ClCompile Include="Camera.cpp" />
+    <ClCompile Include="Ground.cpp" />
     <ClCompile Include="CharMatrix.cpp" />
     <ClCompile Include="ConsoleGame.cpp" />
+    <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="Hero.cpp" />
     <ClCompile Include="InputReader.cpp" />
     <ClCompile Include="MainCircle.cpp" />
     <ClCompile Include="Plane.cpp" />
+    <ClCompile Include="World.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Background.h" />
+    <ClInclude Include="Camera.h" />
+    <ClInclude Include="Ground.h" />
     <ClInclude Include="CharMatrix.h" />
+    <ClInclude Include="GameObject.h" />
     <ClInclude Include="Hero.h" />
     <ClInclude Include="IDrawableObject.h" />
     <ClInclude Include="InputReader.h" />
     <ClInclude Include="MainCircle.h" />
     <ClInclude Include="Plane.h" />
+    <ClInclude Include="TypeHelpers.h" />
+    <ClInclude Include="World.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
