@@ -1,8 +1,7 @@
 #pragma once
 
-class GameObject;
+class World;
 
-#include "World.h"
 
 class GameObject
 {
@@ -13,7 +12,7 @@ public:
 protected:
 	int x_pos;
 	int y_pos;
-	World* world;
+	World* world = nullptr;
 	GameObject(size_t x, size_t y) : x_pos(x), y_pos(y) {};
 };
 

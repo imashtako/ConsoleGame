@@ -26,5 +26,9 @@ private:
     HeroState state;
     void CheckInput();
     void Gravity();
+    bool DownIsEmpty();
+    bool RightIsEmpty();
+    bool LeftIsEmpty();
+
 };
 

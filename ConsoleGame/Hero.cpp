@@ -45,23 +45,51 @@ void Hero::CheckInput()
 {
     InputReader* input = InputReader::GetInstance();
     if (input->IsButtonDown(ButtonKey::d)) {
-        x_pos++;
+        if (RightIsEmpty())
+        {
+            x_pos++;
+        }
         state = HeroState::RIGHT;
     }
     if (input->IsButtonDown(ButtonKey::a)) {
-        x_pos--;
+        if (LeftIsEmpty()) {
+            x_pos--;
+        }
         state = HeroState::LEFT;
     }
 }
 void Hero::Gravity()
 {
+    if (DownIsEmpty()) {
+        y_pos++;
+    }
+}
+bool Hero::DownIsEmpty()
+{
     for (size_t i = 0; i < x_size; i++) {
         if (world->GetObjectIn(x_pos + i, y_pos + y_size)) {
-            return;
+            return false;
         }
     }
-
-    y_pos++;
+    return true;
+}
+bool Hero::RightIsEmpty()
+{
+    for (size_t i = 0; i < y_size; i++) {
+        if (world->GetObjectIn(x_pos + x_size, y_pos + i)) {
+            return false;
+        }
+    }
+    return true;
+}
+bool Hero::LeftIsEmpty()
+{
+    for (size_t i = 0; i < y_size; i++) {
+        if (world->GetObjectIn(x_pos - 1 , y_pos + i)) {
+            return false;
+        }
+    }
+    return true;
 }
 bool Hero::InThisPoint(int x, int y)
 {

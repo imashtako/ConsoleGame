@@ -20,6 +20,7 @@ public:
 	void CleanBuffer();
 	void Start();
 	void Stop();
+
 	static InputReader* GetInstance()
 	{
 		static InputReader* instance;

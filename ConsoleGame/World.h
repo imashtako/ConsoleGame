@@ -1,6 +1,5 @@
 #pragma once
 
-class World;
 #include <vector>
 #include "GameObject.h"
 

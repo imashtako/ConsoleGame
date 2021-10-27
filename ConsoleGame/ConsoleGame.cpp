@@ -21,7 +21,7 @@ int main()
     LevelLoader loader;
     World world = *loader.LoadLevel("level1.txt");
     
-    MainCircle circle(60);
+    MainCircle circle(10);
 
     InputReader* input_reader = InputReader::GetInstance();
     input_reader->Start();

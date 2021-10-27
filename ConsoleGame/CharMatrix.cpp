@@ -43,7 +43,7 @@ int CharMatrix::GetMaxSize(const std::vector<std::string>& strings) const
 {
     int max_x = 0;
     for (size_t i = 0; i < strings.size(); i++) {
-        if (strings[i].size() > max_x) {
+        if ((int)strings[i].size() > max_x) {
             max_x = strings[i].size();
         }
     }
