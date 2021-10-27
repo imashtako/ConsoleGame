@@ -23,12 +23,14 @@ public:
 private:
     const size_t x_size = 6;
     const size_t y_size = 3;
+    int vertical_speed = 0;
     HeroState state;
     void CheckInput();
     void Gravity();
     bool DownIsEmpty();
+    bool UpIsEmpty();
     bool RightIsEmpty();
     bool LeftIsEmpty();
-
+    void MoveBySpeed();
 };
 

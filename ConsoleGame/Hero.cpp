@@ -5,7 +5,7 @@
 
 using namespace std;
 
-Hero::Hero(int x, int y): GameObject(x,y), state(HeroState::RIGHT), IDrawableObject(10) {}
+Hero::Hero(int x, int y): GameObject(x,y), IDrawableObject(10), state(HeroState::RIGHT) {}
 void Hero::Draw(Plane& plane)
 {
     vector<string> image;
@@ -39,35 +39,47 @@ void Hero::Update()
 {
     Gravity();
     CheckInput();
+    MoveBySpeed();
 }
 
 void Hero::CheckInput()
 {
-    InputReader* input = InputReader::GetInstance();
-    if (input->IsButtonDown(ButtonKey::d)) {
+    if (InputReader::IsButtonDown(ButtonKey::d)) {
         if (RightIsEmpty())
         {
             x_pos++;
         }
         state = HeroState::RIGHT;
     }
-    if (input->IsButtonDown(ButtonKey::a)) {
+    if (InputReader::IsButtonDown(ButtonKey::a)) {
         if (LeftIsEmpty()) {
             x_pos--;
         }
         state = HeroState::LEFT;
     }
+    if (InputReader::IsButtonDown(ButtonKey::SPACE)) {
+        if (!DownIsEmpty()) {
+            vertical_speed = -3;
+        }
+    }
 }
 void Hero::Gravity()
 {
-    if (DownIsEmpty()) {
-        y_pos++;
-    }
+    vertical_speed += 1;
 }
 bool Hero::DownIsEmpty()
 {
     for (size_t i = 0; i < x_size; i++) {
         if (world->GetObjectIn(x_pos + i, y_pos + y_size)) {
+            return false;
+        }
+    }
+    return true;
+}
+bool Hero::UpIsEmpty()
+{
+    for (size_t i = 0; i < x_size; i++) {
+        if (world->GetObjectIn(x_pos + i, y_pos - 1)) {
             return false;
         }
     }
@@ -90,6 +102,32 @@ bool Hero::LeftIsEmpty()
         }
     }
     return true;
+}
+void Hero::MoveBySpeed()
+{
+    if (vertical_speed > 0) {
+        vertical_speed = min(vertical_speed, 2);
+        for (int i = 0; i < (int)vertical_speed; i++) {
+            if (DownIsEmpty()) {
+                y_pos++;
+            }
+            else {
+                vertical_speed = 0;
+                break;
+            }
+        }
+    }
+    else if (vertical_speed < 0) {
+        for (int i = 0; i < -(int)vertical_speed; i++) {
+            if (UpIsEmpty()) {
+                y_pos--;
+            }
+            else {
+                vertical_speed = 0;
+                break;
+            }
+        }
+    }
 }
 bool Hero::InThisPoint(int x, int y)
 {

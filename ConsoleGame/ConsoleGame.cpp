@@ -21,19 +21,15 @@ int main()
     LevelLoader loader;
     World world = *loader.LoadLevel("level1.txt");
     
-    MainCircle circle(10);
+    MainCircle circle(20);
 
-    InputReader* input_reader = InputReader::GetInstance();
-    input_reader->Start();
-
-    Plane plane(50, 11);
+    Plane plane(50, 20);
     plane.HideCursor();
     for (int i = 0; true; i++) {
         plane.Update(world);
         plane.Render();
         cout << i << endl;
         world.Update();
-        input_reader->CleanBuffer();
         circle.WaitNextFrame();
     }
 }
