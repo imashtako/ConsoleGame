@@ -14,16 +14,25 @@ enum ButtonKey {
 class InputReader
 {
 public:
+	InputReader(InputReader&) = delete;
+	void operator=(const InputReader&) = delete;
 	bool IsButtonDown(int button) const;
 	void CleanBuffer();
 	void Start();
 	void Stop();
+	static InputReader* GetInstance()
+	{
+		static InputReader* instance;
+		if (instance == nullptr) {
+			instance = new InputReader();
+		}
+		return instance;
+	}
 
 private:
 	std::set<int> buttons;
 	std::shared_future<void> read_future;
 	bool is_work = false;
+	InputReader() {};
 	void Read();
-
 };
-

@@ -9,6 +9,7 @@
 #include "Hero.h"
 #include "InputReader.h"
 #include "World.h"
+#include "LevelLoader.h"
 
 using namespace std;
 
@@ -17,26 +18,22 @@ int main()
 {
     system("cls");
 
-
+    LevelLoader loader;
+    World world = *loader.LoadLevel("level1.txt");
+    
     MainCircle circle(60);
 
-    InputReader input_reader;
-    input_reader.Start();
+    InputReader* input_reader = InputReader::GetInstance();
+    input_reader->Start();
 
-    World world;
-    Ground* background = new Ground(0, 0);
-    world.AddObject(background);
-    Hero* hero = new Hero(4, 7);
-    world.AddObject(hero);
     Plane plane(50, 11);
     plane.HideCursor();
-
     for (int i = 0; true; i++) {
         plane.Update(world);
         plane.Render();
         cout << i << endl;
+        world.Update();
+        input_reader->CleanBuffer();
         circle.WaitNextFrame();
-        hero->CheckInput(input_reader);
-        input_reader.CleanBuffer();
     }
 }

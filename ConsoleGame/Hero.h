@@ -17,13 +17,14 @@ class Hero :
 public:
     Hero(int x, int y);
     void Draw(Plane& plane) override;
-    void Update(const Plane& plane);
-    void CheckInput(const InputReader& input_reader);
+    void Update() override;
     bool InThisPoint(int x, int y) override;
 
 private:
     const size_t x_size = 6;
     const size_t y_size = 3;
     HeroState state;
+    void CheckInput();
+    void Gravity();
 };
 

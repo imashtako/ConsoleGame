@@ -12,7 +12,7 @@ public:
 	CharMatrix(size_t x, size_t y);
 	CharMatrix(const std::vector<std::string>& strings);
 	std::vector<char>& operator[](int index);
-
+	const std::vector<char>& operator[](int index) const;
 private:
 	int GetMaxSize(const std::vector<std::string>& strings) const;
 };

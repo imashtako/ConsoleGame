@@ -1,4 +1,5 @@
 #include <iostream>
+#include <algorithm>
 
 #include <windows.h>
 
@@ -40,7 +41,7 @@ void Plane::Render()
     cout << ToString() << endl;
 }
 
-void Plane::Insert(size_t x, size_t y, CharMatrix&& matrix)
+void Plane::Insert(size_t x, size_t y, const CharMatrix& matrix)
 {
     for (size_t i = 0; i < matrix.size_y; i++) {
         for (size_t j = 0; j < matrix.size_x; j++) {
@@ -64,10 +65,17 @@ void Plane::HideCursor()
 void Plane::Update(World& world)
 {
     Clean();
+    vector<IDrawableObject*> objects;
     for (GameObject* object : world.GetObjects()) {
         if (IDrawableObject* drawable_object = dynamic_cast<IDrawableObject*>(object)) {
-            drawable_object->Draw(*this);
+            objects.push_back(drawable_object);
         }
+    }
+
+    sort(objects.begin(), objects.end(), [](IDrawableObject* a, IDrawableObject* b) {return a->layer < b->layer;});
+
+    for (IDrawableObject* object : objects) {
+        object->Draw(*this);
     }
 }
 

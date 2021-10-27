@@ -1,2 +1,7 @@
-﻿  Plane.cpp
+﻿  ConsoleGame.cpp
+  Ground.cpp
+  Hero.cpp
+  LevelLoader.cpp
+  Plane.cpp
+  Generating Code...
   ConsoleGame.vcxproj -> C:\Users\imashtak\source\repos\ConsoleGame\Debug\ConsoleGame.exe

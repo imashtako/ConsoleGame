@@ -13,7 +13,7 @@ public:
 	void Clean();
 	std::string ToString();
 	void Render();
-	void Insert(size_t x, size_t y, CharMatrix&& matrix);
+	void Insert(size_t x, size_t y, const CharMatrix& matrix);
 	void HideCursor();
 	void Update(World& world);
 private:

@@ -34,6 +34,11 @@ std::vector<char>& CharMatrix::operator[](int index)
     return matrix[index];
 }
 
+const std::vector<char>& CharMatrix::operator[](int index) const 
+{
+    return matrix[index];
+}
+
 int CharMatrix::GetMaxSize(const std::vector<std::string>& strings) const
 {
     int max_x = 0;

@@ -5,7 +5,7 @@
 
 using namespace std;
 
-Hero::Hero(int x, int y): GameObject(x,y), state(HeroState::RIGHT) {}
+Hero::Hero(int x, int y): GameObject(x,y), state(HeroState::RIGHT), IDrawableObject(10) {}
 void Hero::Draw(Plane& plane)
 {
     vector<string> image;
@@ -35,20 +35,33 @@ void Hero::Draw(Plane& plane)
     plane.Insert(x_pos, y_pos, image);
 }
 
-void Hero::Update(const Plane& plane)
+void Hero::Update()
 {
+    Gravity();
+    CheckInput();
 }
 
-void Hero::CheckInput(const InputReader& input_reader)
+void Hero::CheckInput()
 {
-    if (input_reader.IsButtonDown(ButtonKey::d)) {
+    InputReader* input = InputReader::GetInstance();
+    if (input->IsButtonDown(ButtonKey::d)) {
         x_pos++;
         state = HeroState::RIGHT;
     }
-    if (input_reader.IsButtonDown(ButtonKey::a)) {
+    if (input->IsButtonDown(ButtonKey::a)) {
         x_pos--;
         state = HeroState::LEFT;
     }
+}
+void Hero::Gravity()
+{
+    for (size_t i = 0; i < x_size; i++) {
+        if (world->GetObjectIn(x_pos + i, y_pos + y_size)) {
+            return;
+        }
+    }
+
+    y_pos++;
 }
 bool Hero::InThisPoint(int x, int y)
 {
