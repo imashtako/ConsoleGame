@@ -4,12 +4,14 @@
 #include "LevelLoader.h"
 #include "Ground.h"
 #include "Hero.h"
+#include "Mushroom.h"
 
 using namespace std;
 
 enum class Symbol {
     GROUND = '~',
     HERO = '$',
+    MUSROOM = '*',
 };
 
 World* LevelLoader::LoadLevel(std::string path)
@@ -62,8 +64,15 @@ World* LevelLoader::LoadLevel(std::string path)
             case (char)Symbol::GROUND:
                 matrix[i - y_ground_start][j - x_ground_start] = (char)Symbol::GROUND;
                 break;
+
             case (char)Symbol::HERO:
-                world->AddObject(new Hero(i, j));
+                world->AddObject(new Hero(j, i));
+                break;
+
+            case (char)Symbol::MUSROOM:
+                world->AddObject(new Mushroom(j, i));
+                break;
+
             default:
                 break;
             }             

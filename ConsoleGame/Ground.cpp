@@ -1,6 +1,6 @@
 #include "Ground.h"
 
-Ground::Ground(int x, int y, CharMatrix matrix): GameObject(x, y), map(matrix), IDrawableObject(0) {}
+Ground::Ground(int x, int y, CharMatrix matrix): GameObject(x, y, matrix.size_x, matrix.size_y), IDrawableObject(0), map(matrix) {}
 void Ground::Draw(Plane& plane)
 {
     plane.Insert(x_pos, y_pos, map);

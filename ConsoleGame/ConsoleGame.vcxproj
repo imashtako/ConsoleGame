@@ -147,6 +147,7 @@
     <ClCompile Include="InputReader.cpp" />
     <ClCompile Include="LevelLoader.cpp" />
     <ClCompile Include="MainCircle.cpp" />
+    <ClCompile Include="Mushroom.cpp" />
     <ClCompile Include="Plane.cpp" />
     <ClCompile Include="World.cpp" />
   </ItemGroup>
@@ -159,6 +160,7 @@
     <ClInclude Include="InputReader.h" />
     <ClInclude Include="LevelLoader.h" />
     <ClInclude Include="MainCircle.h" />
+    <ClInclude Include="Mushroom.h" />
     <ClInclude Include="Plane.h" />
     <ClInclude Include="TypeHelpers.h" />
     <ClInclude Include="World.h" />

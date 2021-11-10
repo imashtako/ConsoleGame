@@ -19,7 +19,7 @@ int main()
     system("cls");
 
     LevelLoader loader;
-    World world = *loader.LoadLevel("level1.txt");
+    World world = *loader.LoadLevel("level1.txt"); 
     
     MainCircle circle(20);
 
